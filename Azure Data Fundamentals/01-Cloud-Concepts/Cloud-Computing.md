@@ -1,569 +1,395 @@
-# ☁️ Cloud Models
+# ☁️ Cloud Computing
 
-Cloud models describe **how cloud services are provided** and **how much responsibility the customer has versus the cloud provider**.
+## 📌 What is Cloud Computing?
 
-There are two important groups of cloud models to understand:
+**Cloud computing** is the delivery of computing services over the internet instead of relying only on local physical infrastructure.
 
-1. **Cloud deployment models**
+These services can include:
 
-   * Public Cloud
-   * Private Cloud
-   * Hybrid Cloud
+* 🖥️ Compute
+* 💾 Storage
+* 🗄️ Databases
+* 🌐 Networking
+* 🔐 Security
+* 📊 Analytics
+* 🤖 Artificial Intelligence
+* ⚙️ Applications
 
-2. **Cloud service models**
-
-   * IaaS
-   * PaaS
-   * SaaS
-
----
-
-# 1. 🌍 Cloud Deployment Models
-
-Deployment models describe **where the cloud infrastructure is hosted and who has access to it**.
+Instead of an organisation purchasing and maintaining all the required physical hardware, it can use resources provided by a cloud provider such as **Microsoft Azure**.
 
 ---
 
-## ☁️ Public Cloud
+## ☁️ What is Microsoft Azure?
 
-A **public cloud** is a cloud environment where infrastructure and services are provided by a cloud provider.
+**Microsoft Azure** is Microsoft's cloud computing platform.
 
-Examples of major public cloud providers include:
+Azure provides a large collection of cloud services that organisations can use to build, deploy, manage, and scale applications and infrastructure.
 
-* Microsoft Azure
-* Amazon Web Services (AWS)
-* Google Cloud
+Examples include:
 
-The cloud provider owns and manages the underlying physical infrastructure.
+* Azure Virtual Machines
+* Azure App Service
+* Azure Functions
+* Azure Storage
+* Azure SQL Database
+* Azure Virtual Network
+* Microsoft Entra ID
+* Azure Monitor
 
-### 🧑🏾‍💻 Example I Can Relate To
+---
 
-Imagine I build a **C# ASP.NET Core Web API**.
+# 🏢 Traditional IT vs Cloud Computing
 
-Instead of buying a physical server and installing Windows Server, .NET, networking equipment, etc., I could deploy the API to **Microsoft Azure**.
+## Traditional On-Premises Infrastructure
+
+An organisation purchases and manages its own infrastructure.
 
 ```text
-My C# API
-    ↓
-Azure
-    ↓
-Internet
-    ↓
-Users
+Organisation
+     │
+     ├── Physical Servers
+     ├── Storage
+     ├── Networking
+     ├── Data Centre
+     ├── Electricity
+     ├── Cooling
+     └── IT Maintenance
 ```
 
-Azure provides the infrastructure needed to run the application.
-
-I don't need to own the physical server.
-
-### Easy way to remember
-
-> **Public Cloud = Provider owns the infrastructure, I consume the services.**
+The organisation is responsible for purchasing, maintaining, securing, and replacing the infrastructure.
 
 ---
 
-# 🏢 Private Cloud
+## Cloud Computing
 
-A **private cloud** is a cloud environment dedicated to a single organisation.
-
-The infrastructure isn't shared with other organisations in the same way as a public cloud environment.
-
-An organisation may have more control over the environment, but it can also have more responsibility for managing it.
-
-### 🧑🏾‍💻 Example I Can Relate To
-
-Imagine a company has internal applications containing sensitive business information.
-
-Instead of putting everything into a public cloud environment, the company could operate a private cloud environment within its own infrastructure.
-
-For example:
+The organisation consumes infrastructure and services from a cloud provider.
 
 ```text
-Company
-   │
-   ├── Internal Servers
-   ├── Internal Database
-   ├── Internal Network
-   └── Private Cloud
+Organisation
+      │
+      │ Internet
+      ▼
+Cloud Provider
+      │
+      ├── Compute
+      ├── Storage
+      ├── Networking
+      ├── Databases
+      └── Other Cloud Services
 ```
 
-As someone with **IT support, development and testing experience**, you can think of this as an environment where the organisation has much more direct control over the infrastructure.
-
-### Easy way to remember
-
-> **Private Cloud = Cloud environment dedicated to one organisation.**
+The cloud provider manages much of the underlying physical infrastructure.
 
 ---
 
-# 🔀 Hybrid Cloud
+# 💰 Capital Expenditure vs Operational Expenditure
 
-A **hybrid cloud** combines **private/on-premises infrastructure with public cloud services**.
+Cloud computing changes how organisations can spend money on IT infrastructure.
 
-This allows an organisation to keep some workloads internally while using cloud services for others.
+## CapEx — Capital Expenditure
 
-### 🧑🏾‍💻 Example I Can Relate To
+**CapEx** is spending money upfront to purchase physical assets.
 
-Imagine I'm working on an application with:
+Examples:
 
-* A C# backend
-* SQL Server
-* React frontend
+* Buying servers
+* Purchasing networking equipment
+* Building a data centre
+* Buying storage hardware
 
-The company might keep its existing SQL Server database on-premises but host the application in Azure.
+### Example
+
+An organisation spends **R1,000,000** building and equipping a server room.
+
+That is a capital investment.
+
+---
+
+## OpEx — Operational Expenditure
+
+**OpEx** is spending money on services and resources as they are used.
+
+Examples:
+
+* Cloud services
+* Electricity
+* Software subscriptions
+* Maintenance services
+
+Cloud computing often allows organisations to move from large upfront infrastructure costs toward an operational, consumption-based model.
+
+---
+
+# 🔄 Consumption-Based Model
+
+A **consumption-based model** means that customers generally pay for the cloud resources they consume.
+
+Instead of purchasing a physical server upfront, an organisation can provision cloud resources and pay according to its usage and pricing agreement.
+
+### Simple Example
 
 ```text
-             Company
-                │
-        ┌───────┴───────┐
-        │               │
-        ▼               ▼
- On-Premises          Azure
-        │               │
-    SQL Server     C# API / App
-        │               │
-        └───────┬───────┘
-                │
-             Users
+Traditional IT
+
+Buy Server
+     ↓
+Pay Upfront
+     ↓
+Own Hardware
+     ↓
+Maintain Hardware
+
+
+Cloud
+
+Provision Resource
+     ↓
+Use Resource
+     ↓
+Pay According to Usage
+     ↓
+Scale When Required
 ```
 
-This is a **hybrid environment** because part of the solution is on-premises and part is in the public cloud.
+---
 
-### Why might a company do this?
+# 🧑‍💻 Cloud Service Models
 
-Maybe the company already has:
+Cloud services are commonly divided into three main service models:
 
-* Existing databases
-* Legacy applications
-* Internal infrastructure
-* Security requirements
-* Systems that aren't ready to move to the cloud
+* **IaaS**
+* **PaaS**
+* **SaaS**
 
-It can gradually introduce Azure without moving everything at once.
-
-### Easy way to remember
-
-> **Hybrid = Some things stay here, some things move to the cloud.**
+These models determine how much responsibility belongs to the customer and how much is handled by the cloud provider.
 
 ---
 
-# 📊 Deployment Model Comparison
+## 🖥️ IaaS — Infrastructure as a Service
 
-| Model             | Infrastructure                | Example I Can Relate To                  |
-| ----------------- | ----------------------------- | ---------------------------------------- |
-| **Public Cloud**  | Cloud provider                | Deploying a C# API to Azure              |
-| **Private Cloud** | Dedicated to one organisation | Company's internal cloud infrastructure  |
-| **Hybrid Cloud**  | Combination of environments   | SQL Server on-premises + C# API in Azure |
-
----
-
-# 2. 🛠️ Cloud Service Models
-
-Service models describe **how much of the technology stack the cloud provider manages**.
-
-The three main models are:
-
-```text
-IaaS
- ↓
-PaaS
- ↓
-SaaS
-```
-
-As we move from **IaaS → PaaS → SaaS**, the cloud provider manages more for us.
-
----
-
-# 🖥️ IaaS — Infrastructure as a Service
-
-**IaaS** provides the basic infrastructure needed to run systems.
-
-This can include:
+**IaaS** provides virtualised infrastructure such as:
 
 * Virtual machines
 * Storage
 * Networking
 * Operating systems
 
-The customer has significant control over the environment.
+The customer has more control but also more responsibility.
 
----
+### Azure Example
 
-## 🧑🏾‍💻 Example I Can Relate To
-
-Imagine I need to run a **C# application on a Windows Server**.
-
-I could create an **Azure Virtual Machine**.
-
-I would have to deal with things such as:
-
-* Operating system
-* Installing .NET
-* Application configuration
-* Updates
-* Security configuration
-* Application deployment
-
-Azure provides the virtualised infrastructure, but I still manage much of the environment.
-
-```text
-Azure
- │
- └── Virtual Machine
-       │
-       ├── Windows
-       ├── .NET
-       ├── C# Application
-       └── Configuration
-```
+**Azure Virtual Machines**
 
 ### Easy way to remember
 
-> **IaaS = I get the infrastructure and manage more myself.**
+> **IaaS = I manage more.**
 
 ---
 
-# ⚙️ PaaS — Platform as a Service
+## ⚙️ PaaS — Platform as a Service
 
 **PaaS** provides a managed platform for developing and running applications.
 
-The cloud provider handles more of the infrastructure.
+The cloud provider manages more of the underlying infrastructure.
 
-This allows developers to focus more on their applications.
+The developer can focus more on the application rather than managing servers.
 
----
+### Azure Examples
 
-## 🧑🏾‍💻 Example I Can Relate To
-
-Imagine I've built an **ASP.NET Core Web API**.
-
-Instead of creating a Virtual Machine and configuring the operating system myself, I could use **Azure App Service**.
-
-```text
-My responsibility
-       │
-       ▼
-C# / ASP.NET Core API
-       │
-       ▼
-Azure App Service
-       │
-       ▼
-Azure manages more
-of the infrastructure
-```
-
-I can focus on:
-
-* C# code
-* APIs
-* Application configuration
-* Deployment
-* Testing
-
-while Azure handles much of the underlying platform infrastructure.
-
-### Another example
-
-Because I work with **Power Apps and Power Automate**, I can think about PaaS as the idea of using a managed platform where I focus on building the solution rather than maintaining the underlying servers.
+* Azure App Service
+* Azure Functions
+* Azure SQL Database
 
 ### Easy way to remember
 
-> **PaaS = Platform is managed for me; I focus on building the application.**
+> **PaaS = I focus on the application.**
 
 ---
 
-# 📱 SaaS — Software as a Service
+## 📱 SaaS — Software as a Service
 
-**SaaS** provides a complete software application to the user.
+**SaaS** provides complete software applications over the internet.
 
-The provider manages almost everything underneath the application.
+The customer generally uses the application without managing the underlying infrastructure.
 
-The user mainly:
+### Examples
 
-* Uses the application
-* Configures available settings
-* Manages their own data/access where applicable
-
----
-
-## 🧑🏾‍💻 Example I Can Relate To
-
-A good example is **Microsoft 365**.
-
-When I use applications such as:
-
-* Outlook
+* Microsoft 365
 * Microsoft Teams
-* SharePoint Online
-
-I don't manage the underlying:
-
-* Physical servers
-* Operating systems
-* Network infrastructure
-* Application servers
-
-Microsoft manages that infrastructure.
-
-I simply use and configure the software.
-
-### SharePoint Example
-
-Since I've worked with **SharePoint**, this is an especially useful example.
-
-With **SharePoint Online**, I don't need to:
-
-```text
-Buy Server
-   ↓
-Install Windows Server
-   ↓
-Install SharePoint
-   ↓
-Configure infrastructure
-   ↓
-Maintain physical server
-```
-
-Microsoft provides the service.
-
-I can instead focus on things like:
-
-* Sites
-* Lists
-* Libraries
-* Permissions
-* Power Automate
-* Power Apps
-* Business solutions
+* Outlook.com
 
 ### Easy way to remember
 
-> **SaaS = I use the software; the provider manages the platform underneath it.**
+> **SaaS = I use the software.**
 
 ---
 
-# 🧱 IaaS vs PaaS vs SaaS
+# 📊 IaaS vs PaaS vs SaaS
 
-Think about building and running a **C# application**.
+| Model    | Customer Responsibility                  | Example                |
+| -------- | ---------------------------------------- | ---------------------- |
+| **IaaS** | More control over infrastructure and OS  | Azure Virtual Machines |
+| **PaaS** | Focus mainly on application development  | Azure App Service      |
+| **SaaS** | Mainly use and configure the application | Microsoft 365          |
 
-### IaaS
+### Responsibility
 
 ```text
-Azure
- ↓
-Virtual Machine
- ↓
-Windows
- ↓
-.NET
- ↓
-C# Application
+More Customer Responsibility
+            │
+            ▼
+          IaaS
+            │
+          PaaS
+            │
+          SaaS
+            │
+            ▼
+More Provider Responsibility
 ```
-
-I manage a lot.
 
 ---
 
-### PaaS
+# 🌍 Cloud Deployment Models
+
+Cloud environments can also be classified according to how the infrastructure is deployed.
+
+## ☁️ Public Cloud
+
+Cloud infrastructure is provided by a cloud provider and made available to customers over the internet.
+
+### Examples
+
+* Microsoft Azure
+* Amazon Web Services
+* Google Cloud
+
+---
+
+## 🏢 Private Cloud
+
+Cloud infrastructure is dedicated to a single organisation.
+
+The organisation has greater control over the environment but may have more responsibility for managing the infrastructure.
+
+---
+
+## 🔀 Hybrid Cloud
+
+A **hybrid cloud** combines private and public cloud environments.
+
+For example:
 
 ```text
-Azure
- ↓
-App Service
- ↓
-C# Application
+Organisation's
+Private Environment
+        │
+        │
+        ▼
+   Hybrid Cloud
+        ▲
+        │
+        │
+   Microsoft Azure
+   Public Cloud
 ```
 
-Azure manages more of the infrastructure.
-
-I focus more on my application.
+An organisation might keep certain systems on-premises while using Azure for other workloads.
 
 ---
 
-### SaaS
+# 🧠 Key Terms to Remember
 
-```text
-Microsoft
- ↓
-Complete Application
- ↓
-I use it
-```
-
-I mainly use the finished software.
-
----
-
-# 📊 Responsibility Comparison
-
-| Area                    | IaaS                         | PaaS              | SaaS                              |
-| ----------------------- | ---------------------------- | ----------------- | --------------------------------- |
-| Physical infrastructure | Microsoft                    | Microsoft         | Microsoft                         |
-| Networking              | More customer responsibility | Mostly provider   | Provider                          |
-| Operating system        | Customer                     | Provider          | Provider                          |
-| Runtime                 | Customer                     | Provider          | Provider                          |
-| Application             | Customer                     | Customer          | Provider                          |
-| Data                    | Customer                     | Customer          | Customer                          |
-| User access             | Customer                     | Customer          | Customer                          |
-| Example                 | Azure VM                     | Azure App Service | SharePoint Online / Microsoft 365 |
-
-The important idea is:
-
-> **The further we move from IaaS → PaaS → SaaS, the more the cloud provider manages.**
-
----
-
-# 🧠 A Simple Way to Remember the Models
-
-Think about your own development experience.
-
-### IaaS
-
-**"Give me the server. I'll handle the rest."**
-
-Example:
-
-> Azure Virtual Machine + my C# application.
-
-### PaaS
-
-**"Give me a platform. I'll build my application."**
-
-Example:
-
-> Azure App Service + my ASP.NET Core API.
-
-### SaaS
-
-**"Give me the software. I'll use it."**
-
-Example:
-
-> SharePoint Online / Microsoft 365.
+| Term                        | Meaning                                                  |
+| --------------------------- | -------------------------------------------------------- |
+| **Cloud Computing**         | Delivery of computing services over the internet         |
+| **Azure**                   | Microsoft's cloud computing platform                     |
+| **CapEx**                   | Upfront spending on physical assets                      |
+| **OpEx**                    | Ongoing operational spending                             |
+| **Consumption-Based Model** | Pay based on cloud resources/services consumed           |
+| **IaaS**                    | Infrastructure as a Service                              |
+| **PaaS**                    | Platform as a Service                                    |
+| **SaaS**                    | Software as a Service                                    |
+| **Public Cloud**            | Cloud infrastructure provided to customers by a provider |
+| **Private Cloud**           | Cloud environment dedicated to one organisation          |
+| **Hybrid Cloud**            | Combination of public and private cloud environments     |
 
 ---
 
 # 🎯 AZ-900 Exam Focus
 
-Make sure you can answer these questions:
+Make sure you can explain:
 
-### Which model gives you the most control?
-
-**IaaS**
-
----
-
-### Which model lets developers focus more on applications?
-
-**PaaS**
-
----
-
-### Which model provides a complete application?
-
-**SaaS**
+* What cloud computing is
+* What Microsoft Azure is
+* The difference between CapEx and OpEx
+* The consumption-based model
+* IaaS vs PaaS vs SaaS
+* Public vs Private vs Hybrid cloud
+* Who has responsibility in each service model
+* Why organisations use cloud computing
 
 ---
 
-### Which deployment model combines on-premises and public cloud?
+# 📝 Quick Revision
 
-**Hybrid Cloud**
+### What is cloud computing?
+
+> The delivery of computing services over the internet.
+
+### What is IaaS?
+
+> Infrastructure as a Service — provides infrastructure such as virtual machines, storage, and networking.
+
+### What is PaaS?
+
+> Platform as a Service — provides a managed platform for developing and running applications.
+
+### What is SaaS?
+
+> Software as a Service — provides complete software applications over the internet.
+
+### What is a hybrid cloud?
+
+> A combination of public and private cloud environments.
+
+### What is CapEx?
+
+> Upfront investment in physical infrastructure and assets.
+
+### What is OpEx?
+
+> Ongoing operational spending for services and resources.
+
+### What is the consumption-based model?
+
+> Paying for cloud resources according to usage or the applicable pricing model.
 
 ---
 
-### Which deployment model is provided by cloud providers such as Azure?
-
-**Public Cloud**
-
----
-
-### If I deploy a C# API to an Azure Virtual Machine, what service model is this?
-
-**IaaS**
-
----
-
-### If I deploy my C# API using Azure App Service, what service model is this?
-
-**PaaS**
-
----
-
-### If I use SharePoint Online without managing the underlying servers, what model does this represent?
-
-**SaaS**
-
----
-
-# 🔑 Quick Revision
+## ⭐ Key Takeaway
 
 ```text
-DEPLOYMENT MODELS
-
-Public
-  ↓
-Provider's cloud
-
-Private
-  ↓
-Dedicated to one organisation
-
-Hybrid
-  ↓
-Public + Private/On-Premises
-
-
-SERVICE MODELS
-
-IaaS
-  ↓
-More control
-More responsibility
-
-PaaS
-  ↓
-Managed platform
-Focus on application
-
-SaaS
-  ↓
-Complete software
-Mostly just use/configure
+Cloud Computing
+      │
+      ├── Service Models
+      │      ├── IaaS
+      │      ├── PaaS
+      │      └── SaaS
+      │
+      ├── Deployment Models
+      │      ├── Public
+      │      ├── Private
+      │      └── Hybrid
+      │
+      └── Financial Models
+             ├── CapEx
+             └── OpEx
 ```
 
----
+**Core idea:**
 
-# ⭐ Key Takeaway
+> Cloud computing allows organisations to consume computing resources and services without having to own and manage all the underlying physical infrastructure themselves.
 
-The easiest way for me to understand cloud models is to think about **how much I am responsible for**.
-
-```text
-                    CUSTOMER RESPONSIBILITY
-                           ↑
-                           │
-                         IaaS
-                           │
-                         PaaS
-                           │
-                         SaaS
-                           │
-                           ↓
-                    PROVIDER RESPONSIBILITY
-```
-
-**IaaS:** I manage more infrastructure.
-
-**PaaS:** I focus on developing and running my application.
-
-**SaaS:** I mainly use the finished software.
-
-For deployment models:
-
-**Public:** Cloud provider infrastructure.
-
-**Private:** Dedicated cloud environment.
-
-**Hybrid:** Combination of cloud and on-premises/private infrastructure.
+ivate infrastructure.
 
